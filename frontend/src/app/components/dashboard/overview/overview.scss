@@ -1,0 +1,187 @@
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.animate-in {
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.delay-1 {
+    animation-delay: 0.1s;
+}
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+/* --- GLOBALS & UTILS --- */
+.glass {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    border: none;
+    font-size: 14px;
+}
+.btn-primary {
+    background: var(--text-main);
+    color: var(--bg);
+}
+.btn-primary:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+}
+.btn-outline:hover {
+    background: var(--surface-hover);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+.metric-card {
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+.metric-title {
+    color: var(--text-muted);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+.metric-value {
+    font-size: 32px;
+    font-weight: 700;
+}
+.trend {
+    font-size: 13px;
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.chart-container {
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+.bar-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.bar {
+    width: 100%;
+    background: var(--border);
+    border-radius: 4px 4px 0 0;
+    transition: 0.3s;
+    position: relative;
+}
+.bar:hover {
+    background: var(--accent);
+}
+.bar-label {
+    font-size: 11px;
+    color: var(--text-muted);
+} /* --- RESPONSIVE UPDATES --- */
+
+.metrics-grid {
+    display: grid;
+    /* Uses auto-fit to wrap cards naturally, with a minimum width of 240px */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+/* Mobile & Tablet Refinements */
+@media (max-width: 768px) {
+    .metrics-grid {
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    .metric-card {
+        padding: 20px;
+    }
+
+    .metric-value {
+        font-size: 26px; /* Slightly smaller text for mobile */
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .chart-container {
+        height: 160px; /* Reduce chart height on small screens */
+        gap: 8px; /* Tighten bars */
+    }
+
+    .bar-label {
+        font-size: 10px;
+        transform: rotate(-45deg); /* Slant labels if they start to overlap */
+        margin-top: 4px;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+    .metrics-grid {
+        grid-template-columns: 1fr; /* Force single column */
+    }
+
+    .chart-container {
+        gap: 4px;
+    }
+
+    .bar-wrapper span {
+        display: none; /* Hide labels on tiny screens to save space, or use abbreviations */
+    }
+
+    .bar-wrapper:nth-child(even) span {
+        display: block; /* Show every other label to keep context without clutter */
+    }
+}

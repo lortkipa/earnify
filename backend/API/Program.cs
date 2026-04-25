@@ -100,32 +100,32 @@ namespace API
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["JWTConfig:Key"] ?? throw new Exception("Key Missing"))),
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        ValidateLifetime = true,
-        NameClaimType = ClaimTypes.NameIdentifier
-    };
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                            Encoding.UTF8.GetBytes(builder.Configuration["JWTConfig:Key"] ?? throw new Exception("Key Missing"))),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        NameClaimType = ClaimTypes.NameIdentifier
+                    };
 
-    options.Events = new JwtBearerEvents
-    {
-        OnMessageReceived = context =>
-        {
-            // This MUST match the name used in Cookies.Append("Token", ...)
-            if (context.Request.Cookies.ContainsKey("Token"))
-            {
-                context.Token = context.Request.Cookies["Token"];
-            }
-            return Task.CompletedTask;
-        }
-    };
-});
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            // This MUST match the name used in Cookies.Append("Token", ...)
+                            if (context.Request.Cookies.ContainsKey("Token"))
+                            {
+                                context.Token = context.Request.Cookies["Token"];
+                            }
+                            return Task.CompletedTask;
+                        }
+                    };
+                });
 
             builder.Services.AddHttpClient();
 

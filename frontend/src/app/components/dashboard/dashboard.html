@@ -1,124 +1,164 @@
- <div id="app-shell">
-        <aside class="sidebar">
-            <div class="logo"><div class="logo-dot"></div> Earnify</div>
-            <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-left: 16px;">Menu</div>
-            <a class="nav-link active" onclick="switchView('overview', this)">
-                <span style="font-size: 18px;">📊</span> Overview
-            </a>
-            <a class="nav-link" onclick="switchView('links', this)">
-                <span style="font-size: 18px;">🔗</span> Payment Links
-            </a>
-            <a class="nav-link" onclick="switchView('transactions', this)">
-                <span style="font-size: 18px;">💳</span> Transactions
-            </a>
-            <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 32px; margin-bottom: 12px; padding-left: 16px;">Configuration</div>
-            <a class="nav-link" onclick="switchView('settings', this)">
-                <span style="font-size: 18px;">⚙️</span> Settings
-            </a>
-            <a class="nav-link" style="margin-top: auto; color: #ef4444;" (click)="logout()">
-                <span style="font-size: 18px;">🚪</span> Sign Out
-            </a>
-        </aside>
+<!-- <div id="app-shell">
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-dot"></div> Earnify
+        </div>
+        <div
+            style="color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-left: 16px;">
+            Menu</div>
+        <a class="nav-link" routerLink="overview" routerLinkActive="active">
+            <span style="font-size: 18px;">📊</span> Overview
+        </a>
+        <a class="nav-link">
+            <span style="font-size: 18px;">🔗</span> Payment Links
+        </a>
+        <a class="nav-link"  routerLink="transactions" routerLinkActive="active">
+            <span style="font-size: 18px;">💳</span> Transactions
+        </a>
+        <div
+            style="color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 32px; margin-bottom: 12px; padding-left: 16px;">
+            Configuration</div>
+        <a class="nav-link">
+            <span style="font-size: 18px;">⚙️</span> Settings
+        </a>
+        <a class="nav-link" style="margin-top: auto; color: #ef4444;" (click)="logout()">
+            <span style="font-size: 18px;">🚪</span> Sign Out
+        </a>
+    </aside>
 
-        <main class="main-content">
-            <div class="top-bar">
-                <h2 id="page-title">Overview</h2>
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <div style="text-align: right;">
-                        <div id="user-display-name" style="font-size: 14px; font-weight: 600;">Nikoloz Dev</div>
-                        <div style="font-size: 12px; color: var(--text-muted);">Pro Plan</div>
-                    </div>
-                    <div style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">N</div>
+    <main class="main-content">
+        <div class="top-bar">
+            <h2 id="page-title">Overview</h2>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="text-align: right;">
+                    <div id="user-display-name" style="font-size: 14px; font-weight: 600;">{{user()?.firstName}}
+                        {{user()?.lastName}}</div>
+                    <div style="font-size: 12px; color: var(--text-muted);">Free Plan</div>
+                </div>
+                <div *ngIf="user()?.avatarUrl == null"
+                    style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                    {{user()?.firstName?.trim()?.charAt(0)}}{{user()?.lastName?.trim()?.charAt(0)}}</div>
+                <img *ngIf="user()?.avatarUrl != null" [src]="user()?.avatarUrl"
+                    style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+            </div>
+        </div>
+
+        <router-outlet></router-outlet>
+
+        <div id="links" class="view">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 24px;">
+                <p style="color: var(--text-muted);">Manage your active donation and product links.</p>
+                <button class="btn btn-primary">+ Create New Link</button>
+            </div>
+            <div class="card"
+                style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h4 style="margin-bottom: 4px;">General Support</h4>
+                    <p style="font-size: 13px; color: var(--text-muted);">earnify.dev/nikoloz/support</p>
+                </div>
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn btn-outline" style="padding: 8px 16px;">Copy</button>
+                    <button class="btn btn-outline" style="padding: 8px 16px;">Edit</button>
                 </div>
             </div>
+        </div>
 
-            <div id="overview" class="view active">
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-title">30-Day Revenue</div>
-                        <div class="metric-value">$4,290.00</div>
-                        <div class="trend">↑ 12.5% vs last month</div>
+        <div id="transactions" class="view">
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Supporter</th>
+                            <th>Amount</th>
+                            <th>Link Used</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alex Johnson</td>
+                            <td style="font-weight: 600; color: var(--success);">+$50.00</td>
+                            <td>General Support</td>
+                            <td>2 hours ago</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="settings" class="view">
+            <div style="max-width: 600px;">
+                <div class="card" style="margin-bottom: 24px;">
+                    <h3 style="margin-bottom: 20px;">Public Profile</h3>
+                    <div class="input-group">
+                        <label>Display Name</label>
+                        <input type="text" id="name-input" class="input-box" value="Nikoloz Dev">
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Active Supporters</div>
-                        <div class="metric-value">184</div>
-                        <div class="trend">↑ 4 new this week</div>
+                    <div class="input-group">
+                        <label>Bio</label>
+                        <textarea class="input-box"
+                            rows="3">Independent developer building boutique software & open-source tools.</textarea>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Page Views</div>
-                        <div class="metric-value">12.4k</div>
-                        <div class="trend" style="color: var(--text-muted);">Stable</div>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>Revenue Activity</h3>
-                    <div class="chart-container">
-                        <div class="bar-wrapper"><div class="bar" style="height: 40%;"></div><span class="bar-label">Mon</span></div>
-                        <div class="bar-wrapper"><div class="bar" style="height: 60%;"></div><span class="bar-label">Tue</span></div>
-                        <div class="bar-wrapper"><div class="bar" style="height: 30%;"></div><span class="bar-label">Wed</span></div>
-                        <div class="bar-wrapper"><div class="bar" style="height: 80%; background: var(--accent);"></div><span class="bar-label" style="color: white; font-weight: bold;">Thu</span></div>
-                        <div class="bar-wrapper"><div class="bar" style="height: 50%;"></div><span class="bar-label">Fri</span></div>
-                        <div class="bar-wrapper"><div class="bar" style="height: 90%;"></div><span class="bar-label">Sat</span></div>
-                        <div class="bar-wrapper"><div class="bar" style="height: 70%;"></div><span class="bar-label">Sun</span></div>
-                    </div>
+                    <button class="btn btn-primary" onclick="saveSettings()">Save Profile</button>
                 </div>
             </div>
+        </div>
+    </main>
+</div> -->
+<div id="app-shell">
+    <div class="sidebar-overlay" [class.show]="isSidebarOpen" (click)="isSidebarOpen = false"></div>
 
-            <div id="links" class="view">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 24px;">
-                    <p style="color: var(--text-muted);">Manage your active donation and product links.</p>
-                    <button class="btn btn-primary">+ Create New Link</button>
-                </div>
-                <div class="card" style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <h4 style="margin-bottom: 4px;">General Support</h4>
-                        <p style="font-size: 13px; color: var(--text-muted);">earnify.dev/nikoloz/support</p>
-                    </div>
-                    <div style="display: flex; gap: 12px;">
-                        <button class="btn btn-outline" style="padding: 8px 16px;">Copy</button>
-                        <button class="btn btn-outline" style="padding: 8px 16px;">Edit</button>
-                    </div>
-                </div>
-            </div>
+    <aside class="sidebar" [class.open]="isSidebarOpen">
+        <div class="logo">
+            <div class="logo-dot"></div> Earnify
+        </div>
+        <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-left: 16px;">
+            Menu
+        </div>
+        <a class="nav-link" routerLink="overview" routerLinkActive="active" (click)="isSidebarOpen = false">
+            <span style="font-size: 18px;">📊</span> Overview
+        </a>
+        <a class="nav-link" routerLink="links" routerLinkActive="active" (click)="isSidebarOpen = false">
+            <span style="font-size: 18px;">🔗</span> Payment Links
+        </a>
+        <a class="nav-link" routerLink="transactions" routerLinkActive="active" (click)="isSidebarOpen = false">
+            <span style="font-size: 18px;">💳</span> Transactions
+        </a>
+        <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 32px; margin-bottom: 12px; padding-left: 16px;">
+            Configuration
+        </div>
+        <a class="nav-link" routerLink="settings" routerLinkActive="active" (click)="isSidebarOpen = false">
+            <span style="font-size: 18px;">⚙️</span> Settings
+        </a>
+        <a class="nav-link" style="margin-top: auto; color: #ef4444;" (click)="logout()">
+            <span style="font-size: 18px;">🚪</span> Sign Out
+        </a>
+    </aside>
 
-            <div id="transactions" class="view">
-                <div class="card">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Supporter</th>
-                                <th>Amount</th>
-                                <th>Link Used</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Alex Johnson</td>
-                                <td style="font-weight: 600; color: var(--success);">+$50.00</td>
-                                <td>General Support</td>
-                                <td>2 hours ago</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    <main class="main-content">
+        <div class="top-bar">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <button class="mobile-menu-toggle" (click)="isSidebarOpen = !isSidebarOpen">
+                    <span style="font-size: 24px; line-height: 1;">☰</span>
+                </button>
+                <h2 id="page-title" style="margin: 0;">Overview</h2>
             </div>
-
-            <div id="settings" class="view">
-                <div style="max-width: 600px;">
-                    <div class="card" style="margin-bottom: 24px;">
-                        <h3 style="margin-bottom: 20px;">Public Profile</h3>
-                        <div class="input-group">
-                            <label>Display Name</label>
-                            <input type="text" id="name-input" class="input-box" value="Nikoloz Dev">
-                        </div>
-                        <div class="input-group">
-                            <label>Bio</label>
-                            <textarea class="input-box" rows="3">Independent developer building boutique software & open-source tools.</textarea>
-                        </div>
-                        <button class="btn btn-primary" onclick="saveSettings()">Save Profile</button>
+            
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="user-info-text" style="text-align: right;">
+                    <div id="user-display-name" style="font-size: 14px; font-weight: 600;">
+                        {{user()?.firstName}} {{user()?.lastName}}
                     </div>
+                    <div style="font-size: 12px; color: var(--text-muted);">Free Plan</div>
                 </div>
+                
+                <div *ngIf="user()?.avatarUrl == null" style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                    {{user()?.firstName?.trim()?.charAt(0)}}{{user()?.lastName?.trim()?.charAt(0)}}
+                </div>
+                <img *ngIf="user()?.avatarUrl != null" [src]="user()?.avatarUrl" style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; object-fit: cover;">
             </div>
-        </main>
-    </div>
+        </div>
+
+        <router-outlet></router-outlet>  
+    </main>
+</div>

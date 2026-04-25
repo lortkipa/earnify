@@ -1,0 +1,72 @@
+<div class="links-view animate-in">
+  <header class="section-header">
+    <h3>My Active Links</h3>
+    <button class="btn btn-primary btn-sm" (click)="toggleModal()">+ Create New</button>
+  </header>
+
+  <div class="links-grid" *ngIf="links().length > 0; else emptyState">
+    @for (link of links(); track link.id) {
+      <div class="card link-card">
+        <div class="link-info">
+          <div class="img-preview" [style.background-image]="link.image ? 'url(' + link.image + ')' : ''">
+            <span *ngIf="!link.image">★</span>
+          </div>
+          <div class="details">
+            <strong>{{ link.name }}</strong>
+            <small>{{ link.type | uppercase }}</small>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-outline btn-sm" (click)="toggleModal(link.id)">Edit</button>
+          <button class="btn btn-outline btn-sm btn-danger" (click)="deleteLink(link.id)">Delete</button>
+        </div>
+      </div>
+    }
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <p>Your shop is empty.</p>
+      <button class="btn btn-outline" (click)="toggleModal()">Launch First Link</button>
+    </div>
+  </ng-template>
+</div>
+
+<div class="modal-overlay" [class.active]="isModalOpen()" (click)="$event.target === modal && toggleModal()" #modal>
+  <div class="modal-card animate-in">
+    <h3>{{ editingId() ? 'Edit Link' : 'New Payment Link' }}</h3>
+    
+    <div class="form-grid">
+      <div class="row">
+        <select class="input-box" [(ngModel)]="formData.type">
+          <option value="donation">Donation</option>
+          <option value="product">Product</option>
+        </select>
+        <input type="text" class="input-box" placeholder="Title" [(ngModel)]="formData.name">
+      </div>
+
+      <div *ngIf="formData.type === 'donation'">
+        <input type="text" class="input-box" placeholder="Message for supporters..." [(ngModel)]="formData.msg">
+      </div>
+
+      <div *ngIf="formData.type === 'product'" class="product-fields">
+        <div class="row">
+          <input type="number" class="input-box" placeholder="Price ($)" [(ngModel)]="formData.price">
+          <label class="btn btn-outline upload-btn">
+            Upload Image
+            <input type="file" hidden (change)="handleImageUpload($event)">
+          </label>
+        </div>
+        <textarea class="input-box" rows="2" placeholder="Description..." [(ngModel)]="formData.desc"></textarea>
+        <div class="image-preview-strip" *ngIf="tempImg()">
+          <img [src]="tempImg()" alt="Preview">
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button class="btn btn-primary" (click)="saveLink()">Save Changes</button>
+        <button class="btn btn-outline" (click)="toggleModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
