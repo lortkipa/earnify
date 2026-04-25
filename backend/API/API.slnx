@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../Dal/Dal.csproj" />
+  <Project Path="../Data/Data.csproj" Id="9ab3555c-a1a9-4c0e-9e3c-f6113ff6e9a6" />
+  <Project Path="../Service/Service.csproj" />
+  <Project Path="API.csproj" />
+</Solution>

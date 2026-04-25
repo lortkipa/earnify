@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "API.Controllers.PaymentsController",
+    "Method": "CompleteOrder",
+    "RelativePath": "api/Payments/CompleteDonation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "System.Text.Json.Nodes.JsonObject",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.PaymentsController",
+    "Method": "CreateDonation",
+    "RelativePath": "api/Payments/CreateDonation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "System.Text.Json.Nodes.JsonObject",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
