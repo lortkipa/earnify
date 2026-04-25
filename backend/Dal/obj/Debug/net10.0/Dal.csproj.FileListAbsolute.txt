@@ -1,0 +1,16 @@
+C:\Users\Administrator\Desktop\earnify\backend\Dal\bin\Debug\net10.0\Dal.deps.json
+C:\Users\Administrator\Desktop\earnify\backend\Dal\bin\Debug\net10.0\Dal.dll
+C:\Users\Administrator\Desktop\earnify\backend\Dal\bin\Debug\net10.0\Dal.pdb
+C:\Users\Administrator\Desktop\earnify\backend\Dal\bin\Debug\net10.0\Data.dll
+C:\Users\Administrator\Desktop\earnify\backend\Dal\bin\Debug\net10.0\Data.pdb
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\Dal.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\Dal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\Dal.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\Dal.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\Dal.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\Dal.sourcelink.json
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\Dal.csproj.Up2Date
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\Dal.dll
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\refint\Dal.dll
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\Dal.pdb
+C:\Users\Administrator\Desktop\earnify\backend\Dal\obj\Debug\net10.0\ref\Dal.dll
