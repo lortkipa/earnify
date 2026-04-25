@@ -1,0 +1,60 @@
+<div class="glow"></div>
+
+<div class="container">
+    <div class="card">
+
+        <div id="form-view">
+            <div class="profile-header">
+                <div class="avatar">N</div>
+                <div class="profile-info">
+                    <h1>Nikoloz</h1>
+                    <p>Independent developer building boutique software & open-source tools.</p>
+                </div>
+            </div>
+
+            <div class="amount-row">
+                <button class="amt-btn" data-value="5">$5</button>
+                <button class="amt-btn active" data-value="15">$15</button>
+                <button class="amt-btn" data-value="50">$50</button>
+                <button class="amt-btn" id="custom-trigger" (click)="togglecustomAmount()">Custom</button>
+            </div>
+
+            <div id="custom-input-container" style="margin-top: 12px;" *ngIf="customAmount()">
+                <input type="number" id="custom-amt" class="input-box" placeholder="Enter amount ($)" min="1">
+            </div>
+
+            <!-- <label>Card Details</label>
+            <input type="text" id="card-num" class="input-box" placeholder="Card Number" maxlength="19"> -->
+
+            <!-- <div class="row">
+                <input type="text" id="expiry" class="input-box" placeholder="MM/YY" maxlength="5">
+                <input type="text" id="cvc" class="input-box" placeholder="CVC" maxlength="3">
+            </div> -->
+
+            <!-- <button class="pay-btn" id="submit-btn">
+                <span id="btn-txt">Donate $15</span>
+                <div class="spinner" id="loader"></div>
+            </button> -->
+
+            <div #paypalRef></div>
+
+            <!-- <div class="footer-note">
+                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                    <path
+                        d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+                </svg>
+                Secure encrypted payment
+            </div> -->
+        </div>
+
+        <div id="success-view">
+            <div class="success-icon">✦</div>
+            <h2 style="font-size: 24px; margin-bottom: 8px;">Success</h2>
+            <p style="color: var(--text-dim); font-size: 14px;">Thank you for your donation to Nikoloz. Your support
+                helps keep the projects alive.</p>
+            <button class="pay-btn"
+                style="background: transparent; border: 1px solid var(--border); color: white; margin-top: 32px;">Finish</button>
+        </div>
+
+    </div>
+</div>
