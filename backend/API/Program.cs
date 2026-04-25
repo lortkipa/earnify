@@ -12,6 +12,7 @@ using Service;
 using Service.Mapping;
 using System.Security.Claims;
 using System.Text;
+using DotNetEnv;
 
 namespace API
 {
@@ -19,6 +20,8 @@ namespace API
     {
         public static void Main(string[] args)
         {
+            Env.Load();
+
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddCors(options =>

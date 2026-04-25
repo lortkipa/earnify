@@ -208,3 +208,5 @@ C:\Users\Administrator\Desktop\earnify\backend\API\bin\Debug\net10.0\Dal.pdb
 C:\Users\Administrator\Desktop\earnify\backend\API\bin\Debug\net10.0\Data.pdb
 C:\Users\Administrator\Desktop\earnify\backend\API\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Administrator\Desktop\earnify\backend\API\obj\Debug\net10.0\API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Administrator\Desktop\earnify\backend\API\bin\Debug\net10.0\DotNetEnv.dll
+C:\Users\Administrator\Desktop\earnify\backend\API\bin\Debug\net10.0\Sprache.dll

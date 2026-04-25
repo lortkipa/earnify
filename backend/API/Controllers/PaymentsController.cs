@@ -13,6 +13,17 @@ namespace API.Controllers
     [ApiController]
     public class PaymentsController : ControllerBase
     {
+        private readonly string clientId;
+        private readonly string clientSecret;
+        private readonly string uri;
+
+        public PaymentsController()
+        {
+            clientId = Environment.GetEnvironmentVariable("PAYPAL_CLIENT_ID") ?? throw new Exception("PAYPAL_CLIENT_ID is not set");
+            clientSecret = Environment.GetEnvironmentVariable("PAYPAL_CLIENT_SECRET") ?? throw new Exception("PAYPAL_CLIENT_SECRET is not set");
+            uri = Environment.GetEnvironmentVariable("PAYPAL_URI") ?? throw new Exception("PAYPAL_URI is not set");
+        }
+
         [HttpPost("CreateDonation")]
         public async Task<JsonResult> CreateDonation([FromBody] JsonObject data)
         {
@@ -111,12 +122,9 @@ namespace API.Controllers
 
         private async Task<string> GetAccessToken()
         {
-            string clientId = "AcKAtvUNG0ZctjrU51o6oOEyLna3jJjDbM12HpZNZizm67DNsKFI00L_tvmoHJw-S1_fCdX2ImK_OvB9";
-            string clientSecret = "EFRpHP7okAyoKqjgABxXByA65uoRJfXjoUefIz21-BpGRGUwmGukwnUJtResQCJHKDFM-uhZ-PF22T7g";
-            string api = "https://api-m.sandbox.paypal.com";
             string accessToken = "";
 
-            string url = api + "/v1/oauth2/token";
+            string url = uri + "/v1/oauth2/token";
             using (var client = new HttpClient())
             {
                 string credentials64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(clientId + ":" + clientSecret));

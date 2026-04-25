@@ -15,15 +15,18 @@ namespace Service
 
     public class OAuthService : IOAuthService
     {
-        string clientId = "479552883589-iedcfq6hclq484gbr6jt6kpb2otl1l1h.apps.googleusercontent.com";
-        string clientSecret = "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";
-        string redirectUri = "https://localhost:7067/api/Auth/Google/Callback";
+        private readonly string clientId;
+        private readonly string clientSecret;
+        private readonly string redirectUri;
 
         private readonly IHttpClientFactory _httpClientFactory;
 
         public OAuthService(IHttpClientFactory httpClientFactory, IConfiguration config)
         {
             _httpClientFactory = httpClientFactory;
+            clientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID") ?? throw new Exception("GOOGLE_CLIENT_ID is not set");
+            clientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET") ?? throw new Exception("GOOGLE_CLIENT_SECRET is not set");
+            redirectUri = Environment.GetEnvironmentVariable("GOOGLE_REDIRECT_URI") ?? throw new Exception("GOOGLE_REDIRECT_URI is not set");
         }
 
         public async Task<OAuthResponseDTO?> GoogleAuth(string code)
