@@ -1,1 +1,32 @@
-<p>settings works!</p>
+<div class="settings-container">
+    <div class="card" style="width: 100%">
+        <h3 style="margin-bottom: 24px;">PayPal Setup</h3>
+        <div class="form-group" style="margin-bottom: 20px;">
+            <small style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Client ID</small>
+            <input [(ngModel)]="paypalInfo().paypalClientId" 
+                type="text" id="paypal-id" class="input-box" placeholder="Enter PayPal Client ID"
+                style="margin-top: 8px;">
+        </div>
+        <div class="form-group" style="margin-bottom: 32px;">
+            <small style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Secret Key</small>
+            <div class="secret-wrap" style="margin-top: 8px;">
+                <input [(ngModel)]="paypalInfo().paypalClientSecret"
+                    [type]="hideSecret() ? 'password' : 'text'" id="paypal-secret" class="input-box" placeholder="Enter Secret Key">
+                <button class="toggle-btn" (click)="toggleSecret()">{{ hideSecret() ? 'SHOW' : 'HIDE' }}</button>
+            </div>
+        </div>
+        <button class="btn btn-primary" style="width: 100%;" (click)="updatePaypal()">Connect PayPal</button>
+    </div>
+
+    <div class="tutorial-card animate-in">
+        <h4>How to get keys?</h4>
+        <ol>
+            <li>Go to the <a href="https://developer.paypal.com/dashboard/" target="_blank"
+                    style="color: var(--accent);">PayPal Developer Dashboard</a>.</li>
+            <li>Log in and navigate to <strong>Apps & Credentials</strong>.</li>
+            <li>Ensure you are on the <strong>Live</strong> tab (or Sandbox for testing).</li>
+            <li>Click <strong>Create App</strong> and name it "Earnify Shop".</li>
+            <li>Copy the <strong>Client ID</strong> and <strong>Secret</strong> into the fields above.</li>
+        </ol>
+    </div>
+</div>

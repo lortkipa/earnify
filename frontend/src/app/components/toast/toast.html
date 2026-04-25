@@ -1,0 +1,7 @@
+<div *ngIf="toastService.toast$ | async as toast" class="toast-container animate-in"
+    [class.error]="toast.type === 'error'">
+
+    <div class="status-dot"></div>
+    <span class="message">{{ toast.message }}</span>
+
+</div>

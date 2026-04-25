@@ -51,5 +51,21 @@ namespace API.Controllers
 
             return Ok();
         }
+
+        [Authorize]
+        [HttpPatch("Paypal/{id:int}")]
+        public async Task<IActionResult> UpdatePaypal([FromBody] UpdateUserPaypalDTO model)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(userIdClaim, out int userId)) return BadRequest("Invalid User ID in token.");
+        
+            var user = await _userService.GetByIdAsync(userId);
+            if (user == null) return NotFound("User not found.");
+
+            await _userService.UpdatePaypalAsync(userId, model);
+            return Ok();
+        }
     }
 }

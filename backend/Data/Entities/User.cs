@@ -15,6 +15,8 @@ namespace Data.Entities
         public string GoogleId { get; set; } = null!;
         [Required]
         public string GoogleToken { get; set; } = null!;
+        public string? PaypalClientId { get; set; }
+        public string? PaypalClientSecret { get; set; }
         [Required]
         [MaxLength(254)]
         [EmailAddress]

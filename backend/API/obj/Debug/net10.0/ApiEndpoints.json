@@ -91,5 +91,26 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ProfileController",
+    "Method": "UpdatePaypal",
+    "RelativePath": "api/Profile/Paypal/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Service.DTOs.UpdateUserPaypalDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

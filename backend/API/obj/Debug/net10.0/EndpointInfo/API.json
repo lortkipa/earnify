@@ -165,6 +165,47 @@
           }
         }
       }
+    },
+    "/api/Profile/Paypal/{id}": {
+      "patch": {
+        "tags": [
+          "Profile"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserPaypalDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserPaypalDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserPaypalDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -193,12 +234,34 @@
         },
         "additionalProperties": false
       },
+      "UpdateUserPaypalDTO": {
+        "type": "object",
+        "properties": {
+          "paypalClientId": {
+            "type": "string",
+            "nullable": true
+          },
+          "paypalClientSecret": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "UserDTO": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
             "format": "int32"
+          },
+          "paypalClientId": {
+            "type": "string",
+            "nullable": true
+          },
+          "paypalClientSecret": {
+            "type": "string",
+            "nullable": true
           },
           "email": {
             "type": "string",

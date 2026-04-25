@@ -3,11 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\administrator\\desktop\\earnify\\backend\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2A86E52B-DD53-153E-299F-82EC6CBEF2C3}|..\\Service\\Service.csproj|c:\\users\\administrator\\desktop\\earnify\\backend\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A86E52B-DD53-153E-299F-82EC6CBEF2C3}|..\\Service\\Service.csproj|c:\\users\\administrator\\desktop\\earnify\\backend\\service\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Administrator\\Desktop\\earnify\\backend\\Data\\Migrations\\20260425202711_v2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|c:\\users\\administrator\\desktop\\earnify\\backend\\api\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|API.csproj|solutionrelative:controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,27 +25,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\API\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\API\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAQwHUAAAA2AAAAAAAAAA==",
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\Service\\UserService.cs",
+              "RelativeDocumentMoniker": "..\\Service\\UserService.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\Service\\UserService.cs",
+              "RelativeToolTip": "..\\Service\\UserService.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAwD0AAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T17:15:13.239Z",
+              "WhenOpened": "2026-04-25T21:06:35.977Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\Service\\DTOs\\UserDTO.cs",
-              "RelativeDocumentMoniker": "..\\Service\\DTOs\\UserDTO.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\Service\\DTOs\\UserDTO.cs",
-              "RelativeToolTip": "..\\Service\\DTOs\\UserDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Title": "20260425202711_v2.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\Data\\Migrations\\20260425202711_v2.cs",
+              "RelativeDocumentMoniker": "..\\Data\\Migrations\\20260425202711_v2.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\Data\\Migrations\\20260425202711_v2.cs",
+              "RelativeToolTip": "..\\Data\\Migrations\\20260425202711_v2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T11:52:20.939Z",
+              "WhenOpened": "2026-04-25T20:27:11.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\API\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\API\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Controllers\\ProfileController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAwwEAAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T20:17:42.424Z",
               "EditorCaption": ""
             }
           ]

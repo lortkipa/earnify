@@ -58,6 +58,12 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PaypalClientId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaypalClientSecret")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Email")

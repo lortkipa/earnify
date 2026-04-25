@@ -14,6 +14,7 @@ namespace Service
         Task<UserDTO> GetByGoogleIdAsync(string googleId);
         Task<UserDTO> GetByEmailAsync(string email);
         Task<UserDTO> CreateAsync(CreateUserDTO model);
+        Task UpdatePaypalAsync(int id, UpdateUserPaypalDTO model);
     }
 
     public class UserService : IUserService
@@ -44,11 +45,23 @@ namespace Service
             var entity = await _userRepository.GetByEmailAsync(email);
             return _mapper.Map<UserDTO>(entity);
         }
+
         public async Task<UserDTO> CreateAsync(CreateUserDTO model)
         {
             var entity = _mapper.Map<User>(model);
             entity = await _userRepository.AddAsync(entity);
             return _mapper.Map<UserDTO>(entity);
+        }
+
+        public async Task UpdatePaypalAsync(int id, UpdateUserPaypalDTO model)
+        {
+            var entity = await _userRepository.GetByIdAsync(id);
+            if (entity == null) return;
+
+            entity.PaypalClientId = model.PaypalClientId;
+            entity.PaypalClientSecret = model.PaypalClientSecret;
+
+            await _userRepository.UpdateAsync(entity);
         }
     }
 }
