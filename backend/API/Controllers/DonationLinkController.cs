@@ -53,5 +53,26 @@ namespace API.Controllers
             });
             return Ok(result);
         }
+
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (!int.TryParse(userIdClaim, out int userId))
+            {
+                return BadRequest("Invalid User Id in token.");
+            }
+
+            var entity = await _donationLinkService.GetByIdAsync(id);
+            if (entity == null) return BadRequest("Invalid Donation Link Id");
+
+            if (entity.CreatorId != userId) return BadRequest("Invalid Creator Id");
+
+            await _donationLinkService.DeleteAsync(id);
+
+            return Ok();
+        }
     }
 }

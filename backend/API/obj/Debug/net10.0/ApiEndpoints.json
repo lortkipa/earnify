@@ -77,6 +77,22 @@
     ]
   },
   {
+    "ContainingType": "API.Controllers.DonationLinkController",
+    "Method": "Delete",
+    "RelativePath": "api/DonationLink/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.PaymentsController",
     "Method": "CompleteOrder",
     "RelativePath": "api/Payments/CompleteDonation",

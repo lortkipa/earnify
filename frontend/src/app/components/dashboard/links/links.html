@@ -14,22 +14,20 @@
       Link</button>
   </div>
 
-  <div *ngIf="donationLinkService.data().length >= 0"
-    id="links-container">
-    <div *ngFor="let dl of donationLinkService.data()"
-      class="card" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px;">
+  <div *ngIf="donationLinkService.data().length >= 0" id="links-container">
+    <div *ngFor="let dl of donationLinkService.data()" class="card"
+      style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px;">
       <div style="display: flex; align-items: center; gap: 16px;">
-        <div
-          style="width: 50px; height: 50px; background: var(--surface-hover); border-radius: 12px; display:flex; align-items:center; justify-content:center; color: var(--text-muted); font-size: 20px;">
-          ★</div>
+
         <div><strong style="font-size: 16px;">Donation</strong><br><small
             style="color: var(--text-muted); font-weight: 500; letter-spacing: 0.5px;">{{dl.message}}</small></div>
       </div>
-      <div style="display: flex; gap: 10px;">
-        <button class="btn btn-outline btn-sm" onclick="app.openPreview(1777191137888)">Visit</button>
-        <button class="btn btn-outline btn-sm" onclick="app.openModal(1777191137888)">Edit</button>
-        <button class="btn btn-outline btn-sm" style="color: var(--error)"
-          onclick="app.deleteLink(1777191137888)">Delete</button>
+      <div class="actions">
+        <button class="btn btn-outline btn-sm">Visit</button>
+        <button class="btn btn-outline btn-sm">Edit</button>
+        <button
+          (click)="deleteLink(dl.id)" 
+          class="btn btn-outline btn-sm" style="color: var(--error)">Delete</button>
       </div>
     </div>
   </div>

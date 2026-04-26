@@ -26,4 +26,8 @@ export class Links {
     this.donationLinkService.create(this.donationLinkMessage());
     this.toggleShowForm()
   }
+
+  deleteLink(id: number) {
+    this.donationLinkService.delete(id)
+  }
 }

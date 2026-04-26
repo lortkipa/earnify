@@ -35,8 +35,23 @@ export class DonationLinkService {
         headers: { 'Content-Type': 'application/json' }
       }
     ).subscribe({
-      next: () => { this.toastService.show('New Donation Link Created', 'success') },
+      next: (newData) => {
+        this.data.update(currentItems => [...currentItems, newData]);
+        this.toastService.show('New Donation Link Created', 'success')
+      },
       error: () => { this.toastService.show('Failed to Create Donation Link', 'error') }
     });
+  }
+
+  delete(id: number) {
+    this.http.delete<void>(`https://localhost:7067/api/DonationLink/${id}`, { withCredentials: true }).subscribe({
+      next: () => {
+        this.data.update(currentItems =>
+          currentItems.filter(item => item.id !== id)
+        );
+        this.toastService.show('Donation Link Deleted', 'success')
+      },
+      error: () => { this.toastService.show('Failed to Delete Donation Link', 'error') }
+    })
   }
 }
