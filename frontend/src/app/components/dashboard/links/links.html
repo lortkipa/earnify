@@ -1,71 +1,72 @@
 <div class="links-view animate-in">
   <header class="section-header">
     <h3>My Active Links</h3>
-    <button class="btn btn-primary btn-sm" (click)="toggleModal()">+ Create New</button>
+    <button (click)="toggleShowForm()" class="btn btn-primary btn-sm" title="Can't click button"
+      [disabled]="!profileService.data()?.paypalClientId || !profileService.data()?.paypalClientSecret">+ Create
+      New</button>
   </header>
 
-  <div class="links-grid" *ngIf="links().length > 0; else emptyState">
-    @for (link of links(); track link.id) {
-      <div class="card link-card">
-        <div class="link-info">
-          <div class="img-preview" [style.background-image]="link.image ? 'url(' + link.image + ')' : ''">
-            <span *ngIf="!link.image">★</span>
-          </div>
-          <div class="details">
-            <strong>{{ link.name }}</strong>
-            <small>{{ link.type | uppercase }}</small>
-          </div>
-        </div>
-        <div class="actions">
-          <button class="btn btn-outline btn-sm" (click)="toggleModal(link.id)">Edit</button>
-          <button class="btn btn-outline btn-sm btn-danger" (click)="deleteLink(link.id)">Delete</button>
-        </div>
-      </div>
-    }
+  <div *ngIf="donationLinkService.data().length <= 0" id="links-empty"
+    style="text-align: center; padding: 80px 0px; border: 2px dashed var(--border); border-radius: 24px; display: block;">
+    <p style="color: var(--text-muted); margin-bottom: 20px;">Your shop is empty.</p>
+    <button (click)="toggleShowForm()" class="btn btn-outline"
+      [disabled]="!profileService.data()?.paypalClientId || !profileService.data()?.paypalClientSecret">Launch First
+      Link</button>
   </div>
 
-  <ng-template #emptyState>
-    <div class="empty-state">
-      <p>Your shop is empty.</p>
-      <button class="btn btn-outline" (click)="toggleModal()">Launch First Link</button>
+  <div *ngIf="donationLinkService.data().length >= 0"
+    id="links-container">
+    <div *ngFor="let dl of donationLinkService.data()"
+      class="card" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px;">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div
+          style="width: 50px; height: 50px; background: var(--surface-hover); border-radius: 12px; display:flex; align-items:center; justify-content:center; color: var(--text-muted); font-size: 20px;">
+          ★</div>
+        <div><strong style="font-size: 16px;">Donation</strong><br><small
+            style="color: var(--text-muted); font-weight: 500; letter-spacing: 0.5px;">{{dl.message}}</small></div>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-outline btn-sm" onclick="app.openPreview(1777191137888)">Visit</button>
+        <button class="btn btn-outline btn-sm" onclick="app.openModal(1777191137888)">Edit</button>
+        <button class="btn btn-outline btn-sm" style="color: var(--error)"
+          onclick="app.deleteLink(1777191137888)">Delete</button>
+      </div>
     </div>
-  </ng-template>
+  </div>
+
 </div>
 
-<div class="modal-overlay" [class.active]="isModalOpen()" (click)="$event.target === modal && toggleModal()" #modal>
+<div id="modal" class="modal-overlay active" *ngIf="showForm()">
   <div class="modal-card animate-in">
-    <h3>{{ editingId() ? 'Edit Link' : 'New Payment Link' }}</h3>
-    
-    <div class="form-grid">
-      <div class="row">
-        <select class="input-box" [(ngModel)]="formData.type">
-          <option value="donation">Donation</option>
-          <option value="product">Product</option>
-        </select>
-        <input type="text" class="input-box" placeholder="Title" [(ngModel)]="formData.name">
-      </div>
+    <div class="modal-header">
+      <h3>Create New Link</h3>
+      <p>Customize how your link appears to your supporters.</p>
+    </div>
 
-      <div *ngIf="formData.type === 'donation'">
-        <input type="text" class="input-box" placeholder="Message for supporters..." [(ngModel)]="formData.msg">
-      </div>
+    <div class="form-body">
+      <div class="upload-section">
 
-      <div *ngIf="formData.type === 'product'" class="product-fields">
-        <div class="row">
-          <input type="number" class="input-box" placeholder="Price ($)" [(ngModel)]="formData.price">
-          <label class="btn btn-outline upload-btn">
-            Upload Image
-            <input type="file" hidden (change)="handleImageUpload($event)">
-          </label>
+        <div class="input-group">
+          <label>Link Type</label>
+          <select class="input-box">
+            <option value="donation">Donation</option>
+            <option value="product">Product</option>
+          </select>
         </div>
-        <textarea class="input-box" rows="2" placeholder="Description..." [(ngModel)]="formData.desc"></textarea>
-        <div class="image-preview-strip" *ngIf="tempImg()">
-          <img [src]="tempImg()" alt="Preview">
-        </div>
-      </div>
 
-      <div class="form-footer">
-        <button class="btn btn-primary" (click)="saveLink()">Save Changes</button>
-        <button class="btn btn-outline" (click)="toggleModal()">Cancel</button>
+        <div class="input-group">
+          <label>Message</label>
+          <textarea [(ngModel)]="donationLinkMessage" class="input-box" rows="3"
+            placeholder="Tell your supporters why...">
+        </textarea>
+        </div>
+
+        <div class="form-footer">
+          <button (click)="toggleShowForm()" class="btn btn-outline">Cancel</button>
+          <button class="btn btn-primary" [disabled]="donationLinkMessage() == ''" (click)="createLink()">
+            Create Link
+          </button>
+        </div>
       </div>
     </div>
   </div>

@@ -53,10 +53,10 @@ export class ProfileService {
             return {
               ...currentData,
               paypalClientId: data.paypalClientId,
-              paypalClientSecret: data.paypalClientSecret  
+              paypalClientSecret: data.paypalClientSecret
             };
           }
-          
+
           return null;
         });
       },

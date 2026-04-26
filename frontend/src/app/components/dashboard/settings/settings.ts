@@ -18,7 +18,7 @@ export class Settings {
     paypalClientSecret: ''
   })
 
-  constructor(private profileService: ProfileService) {
+  constructor(public profileService: ProfileService) {
     effect(() => {
       const userData = this.profileService.data();
 

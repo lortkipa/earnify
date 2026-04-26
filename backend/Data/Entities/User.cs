@@ -29,5 +29,7 @@ namespace Data.Entities
         public string AvatarUrl { get; set; } = null!;
         [Required]
         public DateTime CreatedAt { get; set; }
+
+        public ICollection<DonationLink> DonationLinks { get; set; } = new List<DonationLink>();
     }
 }

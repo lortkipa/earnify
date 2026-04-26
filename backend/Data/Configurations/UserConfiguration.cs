@@ -38,6 +38,10 @@ namespace Data.Configurations
 
             builder.Property(u => u.CreatedAt)
               .IsRequired();
+
+            builder.HasMany(u => u.DonationLinks)
+                .WithOne(dl => dl.User)
+                .HasForeignKey(dl => dl.CreatorId);
         }
     }
 }

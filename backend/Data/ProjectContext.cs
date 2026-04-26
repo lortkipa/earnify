@@ -11,6 +11,7 @@ namespace Data
     {
         // DBSet properties
         public DbSet<User> Users { get; set; }
+        public DbSet<DonationLink> DonationLinks { get; set; }
 
         public ProjectContext()
         {
@@ -30,6 +31,7 @@ namespace Data
 
             // add configurations
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new DonationLinkConfiguration());
 
             // seeding
         }

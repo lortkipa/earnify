@@ -15,7 +15,9 @@
                 <button class="toggle-btn" (click)="toggleSecret()">{{ hideSecret() ? 'SHOW' : 'HIDE' }}</button>
             </div>
         </div>
-        <button class="btn btn-primary" style="width: 100%;" (click)="updatePaypal()">Connect PayPal</button>
+        <button class="btn btn-primary" style="width: 100%;" (click)="updatePaypal()"
+        [disabled]="profileService.data()?.paypalClientId == paypalInfo().paypalClientId && profileService.data()?.paypalClientSecret == paypalInfo().paypalClientSecret"
+            >Connect PayPal</button>
     </div>
 
     <div class="tutorial-card animate-in">

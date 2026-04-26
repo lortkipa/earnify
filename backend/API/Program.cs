@@ -137,10 +137,12 @@ namespace API
 
             // add repositories
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IDonationLinkRepository, DonationLinkRepository>();
 
             // add services
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IOAuthService, OAuthService>();
+            builder.Services.AddScoped<IDonationLinkService, DonationLinkService>();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

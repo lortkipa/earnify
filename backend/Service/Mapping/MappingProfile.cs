@@ -15,6 +15,11 @@ namespace Service.Mapping
             CreateMap<User, UserDTO>().ReverseMap();
             CreateMap<CreateUserDTO, User>();
             CreateMap<UpdateUserDTO, User>();
+
+            // DonationLink
+            CreateMap<DonationLink, DonationLinkDTO>().ReverseMap();
+            CreateMap<CreateDonationLinkDTO, DonationLink>();
+            CreateMap<UpdateDonationLinkDTO, DonationLink>();
         }
     }
 }
