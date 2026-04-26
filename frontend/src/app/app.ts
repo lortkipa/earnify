@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Toast } from "./components/toast/toast";
+import { ProfileService } from './services/profile-service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,6 @@ import { Toast } from "./components/toast/toast";
 })
 export class App {
   protected readonly title = signal('frontend');
+
+  constructor(private profileService: ProfileService) {}
 }

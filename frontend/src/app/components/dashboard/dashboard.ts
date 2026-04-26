@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, signal } from '@angular/core';
-import { Router, RouterOutlet, RouterLinkWithHref, RouterLink, RouterLinkActive } from '@angular/router';
-import { userModel } from '../../models/user-model';
+import { Component } from '@angular/core';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ProfileService } from '../../services/profile-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,30 +10,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {
-  user = signal<userModel | null>(null)
-
   isSidebarOpen = false
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.http.get<userModel>('https://localhost:7067/api/Profile', { withCredentials: true }).subscribe({
-      next: (user) => {
-        if (user == null) {
-          this.router.navigate(['/home'])
-        }
-
-        this.user.set(user)
-      },
-      error: (err) => {
-        console.error(err);
-        this.router.navigate(['/home']);
-      }
-    })
-  }
+  constructor(public profileService: ProfileService) {}
 
   logout() {
-    this.http.get('https://localhost:7067/api/Profile/Logout', { withCredentials: true }).subscribe({
-      next: (user) => { this.router.navigate(['/home']) },
-      error: (err) => { this.router.navigate(['/home']) }
-    })
+    this.profileService.logout()
   }
 }

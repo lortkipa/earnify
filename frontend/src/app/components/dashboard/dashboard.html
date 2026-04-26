@@ -112,7 +112,8 @@
         <div class="logo">
             <div class="logo-dot"></div> Earnify
         </div>
-        <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-left: 16px;">
+        <div
+            style="color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-left: 16px;">
             Menu
         </div>
         <a class="nav-link" routerLink="overview" routerLinkActive="active" (click)="isSidebarOpen = false">
@@ -124,7 +125,8 @@
         <a class="nav-link" routerLink="transactions" routerLinkActive="active" (click)="isSidebarOpen = false">
             <span style="font-size: 18px;">💳</span> Transactions
         </a>
-        <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 32px; margin-bottom: 12px; padding-left: 16px;">
+        <div
+            style="color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 32px; margin-bottom: 12px; padding-left: 16px;">
             Configuration
         </div>
         <a class="nav-link" routerLink="settings" routerLinkActive="active" (click)="isSidebarOpen = false">
@@ -143,22 +145,28 @@
                 </button>
                 <h2 id="page-title" style="margin: 0;">Overview</h2>
             </div>
-            
+
             <div style="display: flex; align-items: center; gap: 12px;">
                 <div class="user-info-text" style="text-align: right;">
                     <div id="user-display-name" style="font-size: 14px; font-weight: 600;">
-                        {{user()?.firstName}} {{user()?.lastName}}
+                        {{profileService.data()?.firstName}} {{profileService.data()?.lastName}}
                     </div>
                     <div style="font-size: 12px; color: var(--text-muted);">Free Plan</div>
                 </div>
-                
-                <div *ngIf="user()?.avatarUrl == null" style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                    {{user()?.firstName?.trim()?.charAt(0)}}{{user()?.lastName?.trim()?.charAt(0)}}
+
+                <div *ngIf="profileService.data()?.avatarUrl == null"
+                    style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                    {{profileService.data()?.firstName?.trim()?.charAt(0)}}{{profileService.data()?.lastName?.trim()?.charAt(0)}}
                 </div>
-                <img *ngIf="user()?.avatarUrl != null" [src]="user()?.avatarUrl" style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; object-fit: cover;">
+                <img *ngIf="profileService.data()?.avatarUrl != null" [src]="profileService.data()?.avatarUrl"
+                    style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; object-fit: cover;">
             </div>
         </div>
 
-        <router-outlet></router-outlet>  
+        <div *ngIf="!profileService.data()?.paypalClientId || !profileService.data()?.paypalClientSecret" id="payment-warning" class="warning-banner">
+            <div class="status-dot"></div>
+            <span>Payment is not setup. Configure PayPal in Settings to receive money.</span>
+        </div>
+        <router-outlet></router-outlet>
     </main>
 </div>

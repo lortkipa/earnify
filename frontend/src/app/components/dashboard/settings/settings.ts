@@ -1,9 +1,7 @@
-import { Component, signal } from '@angular/core';
-import { ToastService } from '../../../services/toast-service';
-import { HttpClient } from '@angular/common/http';
-import { userModel, userPaypalModel } from '../../../models/user-model';
-import { Router } from '@angular/router';
+import { Component, effect, signal } from '@angular/core';
+import { userPaypalModel } from '../../../models/user-model';
 import { FormsModule } from '@angular/forms';
+import { ProfileService } from '../../../services/profile-service';
 
 @Component({
   standalone: true,
@@ -15,30 +13,22 @@ import { FormsModule } from '@angular/forms';
 export class Settings {
   hideSecret = signal<boolean>(true)
 
-  user = signal<userModel | null>(null)
   paypalInfo = signal<userPaypalModel>({
     paypalClientId: '',
     paypalClientSecret: ''
   })
 
-  constructor(private toastService: ToastService, private http: HttpClient, private router: Router) {
-    this.http.get<userModel>('https://localhost:7067/api/Profile', { withCredentials: true }).subscribe({
-      next: (user) => {
-        if (user == null) {
-          this.router.navigate(['/home'])
-        }
+  constructor(private profileService: ProfileService) {
+    effect(() => {
+      const userData = this.profileService.data();
 
-        this.user.set(user)
+      if (userData) {
         this.paypalInfo.set({
-          paypalClientId: user.paypalClientId,
-          paypalClientSecret: user.paypalClientSecret
-        })
-      },
-      error: (err) => {
-        console.error(err);
-        this.router.navigate(['/home']);
+          paypalClientId: userData.paypalClientId ?? '',
+          paypalClientSecret: userData.paypalClientSecret ?? ''
+        });
       }
-    })
+    });
   }
 
   toggleSecret(): void {
@@ -46,13 +36,6 @@ export class Settings {
   }
 
   updatePaypal(): void {
-    this.http.patch<void>(`https://localhost:7067/api/Profile/Paypal/${this.user()?.id}`, this.paypalInfo(), { withCredentials: true }).subscribe({
-      next: (user) => {
-        this.toastService.show('paypal info updated', 'success');
-      },
-      error: (err) => {
-        this.toastService.show('failed to update paypal info', 'error');
-      }
-    })
+    this.profileService.updatePaypal(this.paypalInfo())
   }
 }

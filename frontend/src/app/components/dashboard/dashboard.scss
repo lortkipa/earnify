@@ -496,3 +496,23 @@ td {
         display: none;
     }
 }
+
+.warning-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: var(--error);
+}
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--error);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--error);
+}

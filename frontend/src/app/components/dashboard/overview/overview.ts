@@ -12,21 +12,4 @@ import { CommonModule } from '@angular/common';
   styleUrl: './overview.scss',
 })
 export class Overview {
-  user = signal<userModel | null>(null)
-
-  constructor(private http: HttpClient, private router: Router) {
-    this.http.get<userModel>('https://localhost:7067/api/Profile', { withCredentials: true }).subscribe({
-      next: (user) => {
-        if (user == null) {
-          this.router.navigate(['/home'])
-        }
-
-        this.user.set(user)
-      },
-      error: (err) => {
-        console.error(err);
-        this.router.navigate(['/home']);
-      }
-    })
-  }
 }
