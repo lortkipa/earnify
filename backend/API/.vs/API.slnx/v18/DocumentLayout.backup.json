@@ -39,8 +39,7 @@
               "RelativeToolTip": "..\\Service\\DonationLinkService.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAuwDIAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T16:54:34.102Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T16:54:34.102Z"
             },
             {
               "$type": "Document",
@@ -52,8 +51,7 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAewBEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T16:54:09.878Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T16:54:09.878Z"
             },
             {
               "$type": "Document",
@@ -65,8 +63,7 @@
               "RelativeToolTip": "..\\Service\\Mapping\\MappingProfile.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T16:53:32.364Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T16:53:32.364Z"
             },
             {
               "$type": "Document",
@@ -78,8 +75,7 @@
               "RelativeToolTip": "..\\Service\\UserService.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAswEAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T16:51:11.446Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T16:51:11.446Z"
             },
             {
               "$type": "Document",
@@ -87,8 +83,8 @@
               "Title": "DonationLinkController.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\API\\Controllers\\DonationLinkController.cs",
               "RelativeDocumentMoniker": "Controllers\\DonationLinkController.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\API\\Controllers\\DonationLinkController.cs*",
-              "RelativeToolTip": "Controllers\\DonationLinkController.cs*",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\earnify\\backend\\API\\Controllers\\DonationLinkController.cs",
+              "RelativeToolTip": "Controllers\\DonationLinkController.cs",
               "ViewState": "AgIAADQAAAAAAAAAAAAMwEcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-26T12:00:20.136Z",

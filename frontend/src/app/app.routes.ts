@@ -53,7 +53,7 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'donate',
+        path: 'donate/:id',
         component: Donate,
         title: APP_NAME
     }

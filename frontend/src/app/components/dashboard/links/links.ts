@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProfileService } from '../../../services/profile-service';
 import { DonationLinkService } from '../../../services/donation-link-service';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-links',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './links.html',
   styleUrls: ['./links.scss']
 })

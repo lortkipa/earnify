@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit, ElementRef, ViewChild, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 declare var paypal: any;
 
@@ -11,9 +12,15 @@ declare var paypal: any;
 })
 
 export class Donate implements AfterViewInit {
+  donationLinkId = signal<number>(0)
 
   amount = signal<number>(15)
   customAmount = signal<boolean>(false)
+
+  constructor(private route: ActivatedRoute) {
+    this.donationLinkId.set(Number(this.route.snapshot.paramMap.get('id')))
+  }
+
 
   togglecustomAmount() {
     this.customAmount.set(!this.customAmount())
